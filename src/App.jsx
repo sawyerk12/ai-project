@@ -1249,8 +1249,8 @@ export default function App() {
           <h1 className="text-3xl font-bold mb-4 text-white">Minimalist Todo App</h1>
           {authMode === "login" && (
             <form onSubmit={handleLogin} className="flex flex-col gap-3">
-              <input type="email" className="todo-input" placeholder="Email" value={loginInfo.email} onChange={e => setLoginInfo(i => ({...i, email: e.target.value}))} required />
-              <input type="password" className="todo-input" placeholder="Password" value={loginInfo.password} onChange={e => setLoginInfo(i => ({...i, password: e.target.value}))} required />
+              <input type="email" className="todo-input" placeholder="Email" value={loginInfo.email} onChange={e => setLoginInfo(i => ({...i, email: e.target.value}))} required name="email" />
+              <input type="password" className="todo-input" placeholder="Password" value={loginInfo.password} onChange={e => setLoginInfo(i => ({...i, password: e.target.value}))} required name="password" />
               <button className="btn-primary" type="submit" disabled={authLoading}>{authLoading ? "Logging in..." : "Login"}</button>
               <button type="button" className="btn-secondary" onClick={() => { setAuthMode("register"); setAuthError(""); }}>Create Account</button>
               {authError && <div className="toast error">{authError}</div>}
@@ -1258,10 +1258,10 @@ export default function App() {
           )}
           {authMode === "register" && (
             <form onSubmit={handleRegister} className="flex flex-col gap-3">
-              <input type="text" className="todo-input" placeholder="Name" value={registerInfo.name} onChange={e => setRegisterInfo(i => ({...i, name: e.target.value}))} required />
-              <input type="email" className="todo-input" placeholder="Email" value={registerInfo.email} onChange={e => setRegisterInfo(i => ({...i, email: e.target.value}))} required />
-              <input type="password" className="todo-input" placeholder="Password" value={registerInfo.password} onChange={e => setRegisterInfo(i => ({...i, password: e.target.value}))} required />
-              <input type="password" className="todo-input" placeholder="Confirm Password" value={registerInfo.confirmPassword} onChange={e => setRegisterInfo(i => ({...i, confirmPassword: e.target.value}))} required />
+              <input type="text" className="todo-input" placeholder="Name" value={registerInfo.name} onChange={e => setRegisterInfo(i => ({...i, name: e.target.value}))} required name="name" />
+              <input type="email" className="todo-input" placeholder="Email" value={registerInfo.email} onChange={e => setRegisterInfo(i => ({...i, email: e.target.value}))} required name="email" />
+              <input type="password" className="todo-input" placeholder="Password" value={registerInfo.password} onChange={e => setRegisterInfo(i => ({...i, password: e.target.value}))} required name="password" />
+              <input type="password" className="todo-input" placeholder="Confirm Password" value={registerInfo.confirmPassword} onChange={e => setRegisterInfo(i => ({...i, confirmPassword: e.target.value}))} required name="confirmPassword" />
               <button className="btn-primary" type="submit" disabled={authLoading}>{authLoading ? "Registering..." : "Register"}</button>
               <button type="button" className="btn-secondary" onClick={() => { setAuthMode("login"); setAuthError(""); }}>Back to Login</button>
               {authError && <div className="toast error">{authError}</div>}
@@ -1269,8 +1269,8 @@ export default function App() {
           )}
           {authMode === "verify" && (
             <form onSubmit={handleVerify} className="flex flex-col gap-3">
-              <input type="email" className="todo-input" placeholder="Email" value={verifyInfo.email} onChange={e => setVerifyInfo(i => ({...i, email: e.target.value}))} required />
-              <input type="text" className="todo-input" placeholder="Verification Code" value={verifyInfo.code} onChange={e => setVerifyInfo(i => ({...i, code: e.target.value}))} required />
+              <input type="email" className="todo-input" placeholder="Email" value={verifyInfo.email} onChange={e => setVerifyInfo(i => ({...i, email: e.target.value}))} required name="email" />
+              <input type="text" className="todo-input" placeholder="Verification Code" value={verifyInfo.code} onChange={e => setVerifyInfo(i => ({...i, code: e.target.value}))} required name="code" />
               <button className="btn-primary" type="submit" disabled={authLoading}>{authLoading ? "Verifying..." : "Verify Email"}</button>
               <button type="button" className="btn-secondary" onClick={() => { setAuthMode("login"); setAuthError(""); }}>Back to Login</button>
               {authError && <div className="toast error">{authError}</div>}

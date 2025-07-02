@@ -10,11 +10,22 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Enable CORS for Vercel frontend
-app.use(cors({
-  origin: 'https://ai-project-clean.vercel.app',
-  credentials: true
-}));
+// Allow requests from your Vercel frontend
+const allowedOrigins = [
+  'https://ai-project-clean-hjcehzx8f-sawyers-projects-c6e9c9d0.vercel.app'
+];
+
+// CORS middleware (explicit, before any other middleware)
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://ai-project-clean-hjcehzx8f-sawyers-projects-c6e9c9d0.vercel.app");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+  next();
+});
 
 // In-memory storage (replace MongoDB)
 const users = [];
