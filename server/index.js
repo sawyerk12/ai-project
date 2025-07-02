@@ -489,6 +489,12 @@ process.on('SIGINT', () => {
   });
 });
 
+// Health check route
+app.get('/', (req, res) => {
+  res.send('Backend is running!');
+});
+
+// Start the server
 const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
