@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: todo-app-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server/index.js
+    envVars:
+      - key: MONGODB_URI
+        value: mongodb+srv://username:password@cluster.mongodb.net/todo-app
+      - key: JWT_SECRET
+        value: your-super-secret-jwt-key-here
+      - key: EMAIL_USER
+        value: your-email@gmail.com
+      - key: EMAIL_PASS
+        value: your-gmail-app-password
+      - key: PORT
+        value: 3000 
