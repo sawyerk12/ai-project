@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme Definitions - High specificity */
+html.theme-blue-purple,
+body.theme-blue-purple {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
+}
+
+html.theme-sunset,
+body.theme-sunset {
+  background: linear-gradient(135deg, #ff6b6b 0%, #feca57 50%, #ff9ff3 100%) !important;
+}
+
+html.theme-ocean,
+body.theme-ocean {
+  background: linear-gradient(135deg, #48cae4 0%, #023e8a 50%, #0077b6 100%) !important;
+}
+
+html.theme-forest,
+body.theme-forest {
+  background: linear-gradient(135deg, #52b788 0%, #2d6a4f 50%, #081c15 100%) !important;
+}
+
+html.theme-midnight,
+body.theme-midnight {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #1a1a2e 100%) !important;
+}
+
+html.theme-rose,
+body.theme-rose {
+  background: linear-gradient(135deg, #e91e63 0%, #9c27b0 50%, #673ab7 100%) !important;
+}
+
+html.theme-aurora,
+body.theme-aurora {
+  background: linear-gradient(135deg, #00d4aa 0%, #0099cc 50%, #9933cc 100%) !important;
+}
+
+html.theme-light-mode,
+body.theme-light-mode {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%) !important;
+}
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply transition-all duration-300;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #root {
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  /* Color Modes */
+  .color-mode-dark {
+    @apply text-white;
+  }
+  
+  .color-mode-light {
+    @apply text-gray-900;
+  }
+
+  /* Compact mode */
+  .compact-mode .glass-card {
+    @apply p-4;
+  }
+
+  .compact-mode .todo-item {
+    @apply p-3 mb-2;
+  }
+
+  .compact-mode .btn-primary,
+  .compact-mode .btn-secondary {
+    @apply px-4 py-2 text-sm;
+  }
+}
+
+@layer components {
+  .todo-input {
+    @apply w-full px-4 py-3 text-lg border-0 rounded-xl bg-white/90 backdrop-blur-sm text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-white/50 focus:outline-none transition-all duration-200 shadow-lg;
+  }
+  
+  .todo-item {
+    @apply flex items-center gap-3 p-4 bg-white/15 backdrop-blur-md rounded-xl shadow-lg border border-white/30 transition-all duration-200 hover:bg-white/25 hover:shadow-xl hover:border-white/40;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl focus:ring-2 focus:ring-white/50 focus:outline-none backdrop-blur-sm border border-white/20;
+    background-size: 200% 200%;
+  }
+  
+  .btn-secondary {
+    @apply px-4 py-2 bg-white/15 hover:bg-white/25 text-white font-medium rounded-lg transition-all duration-200 backdrop-blur-sm border border-white/30;
+  }
+  
+  .checkbox {
+    @apply w-5 h-5 text-white bg-white/20 border-white/30 rounded-lg focus:ring-white/50 focus:ring-2;
+  }
+  
+  .glass-card {
+    @apply backdrop-blur-xl rounded-xl shadow-lg;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  }
+
+  /* Dark mode component styles */
+  .color-mode-dark .glass-card {
+    @apply bg-black/20 border border-white/20;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+
+  .color-mode-dark .todo-input {
+    @apply bg-black/30 text-white border-white/20 placeholder-white/50;
+  }
+
+  .color-mode-dark .todo-item {
+    @apply bg-black/20 border border-white/20;
+  }
+
+  .color-mode-dark .btn-primary {
+    @apply bg-gradient-to-r from-blue-500 to-purple-600 text-white border-white/20;
+  }
+
+  .color-mode-dark .btn-secondary {
+    @apply bg-black/30 text-white border border-white/20;
+  }
+
+  .color-mode-dark .checkbox {
+    @apply bg-black/30 border-white/30 text-white;
+  }
+
+  /* Light mode component styles */
+  .color-mode-light .glass-card {
+    @apply bg-white/80 border border-gray-200;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .color-mode-light .todo-input {
+    @apply bg-white/90 text-gray-900 border-gray-300 placeholder-gray-500;
+  }
+
+  .color-mode-light .todo-item {
+    @apply bg-white/80 border-gray-200;
+  }
+
+  .color-mode-light .btn-primary {
+    @apply bg-gradient-to-r from-blue-500 to-purple-600 text-white;
+  }
+
+  .color-mode-light .btn-secondary {
+    @apply bg-gray-100 text-gray-700 border-gray-300;
+  }
+
+  .color-mode-light .checkbox {
+    @apply bg-white border-gray-300 text-blue-600;
+  }
+
+  /* Toggle switch styles */
+  .toggle-switch {
+    @apply relative inline-flex w-12 h-6 transition-colors duration-200 rounded-full cursor-pointer;
+  }
+
+  .toggle-switch-on {
+    @apply bg-blue-500;
+  }
+
+  .toggle-switch-thumb {
+    @apply absolute w-5 h-5 bg-white rounded-full transition-transform duration-200;
+  }
+
+  .toggle-switch-thumb-on {
+    @apply transform translate-x-6;
+  }
+
+  .toggle-switch-thumb-off {
+    @apply transform translate-x-1;
+  }
+
+  /* Dark mode toggle */
+  .color-mode-dark .toggle-switch-off {
+    @apply bg-white/20;
+  }
+
+  /* Light mode toggle */
+  .color-mode-light .toggle-switch-off {
+    @apply bg-gray-300;
+  }
+
+  /* Bottom navigation styles */
+  .color-mode-dark nav {
+    @apply bg-black/30 border-white/20;
+  }
+
+  .color-mode-light nav {
+    @apply bg-white/80 border-gray-200;
+  }
+
+  .color-mode-dark nav button {
+    @apply text-white;
+  }
+
+  .color-mode-light nav button {
+    @apply text-gray-900;
+  }
+
+  /* Active button styles for dark mode */
+  .color-mode-dark nav button.active {
+    @apply bg-white/20;
+  }
+
+  /* Active button styles for light mode */
+  .color-mode-light nav button.active {
+    @apply bg-black/20;
+  }
+}
