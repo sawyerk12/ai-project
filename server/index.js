@@ -10,13 +10,18 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Enable CORS for Vercel frontend
+app.use(cors({
+  origin: 'https://ai-project-clean.vercel.app',
+  credentials: true
+}));
+
 // In-memory storage (replace MongoDB)
 const users = [];
 const todos = [];
 const verificationCodes = new Map(); // Map userId -> { code, expires }
 
 // Middleware
-app.use(cors());
 app.use(express.json());
 
 // Helper function to find user by email
